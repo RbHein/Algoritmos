@@ -1,0 +1,588 @@
+/* 1. Escreva um trecho de código para fazer a criação dos novos tipos de dados conforme
+solicitado abaixo:
+• Horário: composto de hora, minutos e segundos. ́
+• Data: composto de dia, mês e ano
+• Compromisso: composto de uma data, horário e texto que descreve o compromisso */
+
+#include <stdio.h>
+#include <string.h>
+
+struct Horario 
+{
+    int hora, minutos, segundos;
+};
+
+struct Data 
+{
+    int dia, mes, ano;
+};
+
+struct Compromisso 
+{
+    struct Data data;
+    struct Horario horario;
+    char texto[100];
+};
+
+int main () 
+{
+    struct Horario horario1;
+    horario1.hora = 9;
+    horario1.minutos = 30;
+    horario1.segundos = 0;
+
+    struct Data data1;
+    data1.dia = 12;
+    data1.mes = 5;
+    data1.ano = 2023;
+
+    struct Compromisso compromisso1;
+    compromisso1.data = data1;
+    compromisso1.horario = horario1;
+    strcpy(compromisso1.texto, "Reuniao");
+
+    printf("Compromisso: \n");
+
+    printf("Data: %d/%d/%d\n", compromisso1.data.dia, compromisso1.data.mes, compromisso1.data.ano);
+    printf("Horario: %02d:%02d:%02d\n", compromisso1.horario.hora, compromisso1.horario.minutos, compromisso1.horario.segundos);
+    printf("Texto: %s\n", compromisso1.texto);
+
+    return 0;
+}
+
+
+/* 2. Implemente um programa que leia o nome, a idade e o endereço de uma pessoa e
+Armazene os dados em uma estrutura. */
+
+
+#include <stdio.h>
+#include <string.h>
+
+struct Pessoa
+{
+    int idade;
+    char nome[50], endereco[100];
+};
+
+int main () 
+{
+    struct Pessoa pessoa;    
+    
+    printf("Informe o nome: ");
+    fgets(pessoa.nome, 50, stdin);
+
+    printf("Informe a idade: ");
+    scanf("%d", &pessoa.idade);
+    getchar(); 
+
+    printf("Informe o endereco: ");
+    fgets(pessoa.endereco, 100, stdin);
+
+    printf("\nDados Armazenados:\n");
+    printf("Nome: %s", pessoa.nome);
+    printf("Idade: %d\n", pessoa.idade);
+    printf("Endereco: %s", pessoa.endereco);
+
+    return 0;
+}
+
+
+
+
+/* 3. Construa uma estrutura aluno com nome, número de matrícula e curso. Leia do usuário
+a informac ̧ao de 5 alunos, armazene em vetor dessa estrutura e imprima os dados na
+tela. */
+
+#include <stdio.h>
+#include <string.h>
+
+struct Aluno
+{
+    int matricula;
+    char nome [50], curso [50];
+};
+
+int main() 
+{
+    int i;
+    struct Aluno alunos[5];
+    
+    for (i = 0; i < 5; i++)
+    {
+        printf("Aluno %d: \n", i + 1);
+
+        printf("Informe o nome: ");
+        fgets(alunos[i].nome, 50, stdin);
+
+        printf("Informe o Numero de Matricula: ");
+        scanf("%d", &alunos[i].matricula);
+        getchar(); 
+
+        printf("Informe o Curso: ");
+        fgets(alunos[i].curso, 50, stdin);
+
+        printf("Dados dos Alunos:\n");
+    }
+
+    for (int i = 0; i < 5; i++) 
+    {
+        printf("Aluno %d\n", i + 1);
+        printf("Nome: %s", alunos[i].nome);
+        printf("Numero Matricula: %d\n", alunos[i].matricula);
+        printf("Curso: %s", alunos[i].curso);
+    }
+
+    return 0;
+}
+
+
+/* 4. Crie uma estrutura representando os alunos de um determinado curso. A estrutura deve
+conter a matrícula do aluno, nome, nota da primeira prova, nota da segunda prova e nota
+da terceira prova. */
+
+#include <stdio.h>
+#include <string.h>
+
+struct Aluno 
+{
+    int matricula;
+    float nota1, nota2, nota3;
+    char nome[50];
+};
+
+int main () 
+{
+    struct Aluno aluno;
+
+    printf("Informe o numero de matricula do aluno: ");
+    scanf("%d", &aluno.matricula);
+    getchar(); 
+
+    printf("Digite o nome do aluno: ");
+    fgets(aluno.nome, 50, stdin);
+
+    printf("Nota da primeira prova: ");
+    scanf("%f", &aluno.nota1);
+    getchar(); 
+
+    printf("Nota da segunda prova: ");
+    scanf("%f", &aluno.nota2);
+    getchar(); 
+
+    printf("Nota da terceira prova: ");
+    scanf("%f", &aluno.nota3);
+    getchar(); 
+
+    printf("\nDados do Aluno:\n");
+    printf("Numero Matricula: %d\n", aluno.matricula);
+    printf("Nome: %s", aluno.nome);
+    printf("Nota da primeira prova: %.2f\n", aluno.nota1);
+    printf("Nota da segunda prova: %.2f\n", aluno.nota2);
+    printf("Nota da terceira prova: %.2f\n", aluno.nota3);
+
+    return 0;
+}
+
+
+/* 5. Considerando a estrutura
+struct Vetor
+{
+float x;
+float y;
+float z;
+};
+para representar um vetor no R3 implemente um programa que calcule a soma de dois
+vetores. */
+
+#include <stdio.h>
+
+struct Vetor 
+{
+    float x, y, z;
+};
+
+struct Vetor somaVetores(struct Vetor v1, struct Vetor v2) 
+{
+    struct Vetor resultado;
+    resultado.x = v1.x + v2.x;
+    resultado.y = v1.y + v2.y;
+    resultado.z = v1.z + v2.z;
+    return resultado;
+}
+
+int main () 
+{
+    struct Vetor vetor1, vetor2, soma;
+
+    printf("Digite as componentes do primeiro vetor: \n");
+
+    printf("x: ");
+    scanf("%f", &vetor1.x);
+
+    printf("y: ");
+    scanf("%f", &vetor1.y);
+
+    printf("z: ");
+    scanf("%f", &vetor1.z);
+
+    printf("Digite as componentes do segundo vetor: \n");
+
+    printf("x: ");
+    scanf("%f", &vetor2.x);
+
+    printf("y: ");
+    scanf("%f", &vetor2.y);
+
+    printf("z: ");
+    scanf("%f", &vetor2.z);
+
+    soma = somaVetores(vetor1, vetor2);
+
+    printf("\nA soma dos vetores resulta em: \n");
+
+    printf("x: %.2f\n", soma.x);
+    printf("y: %.2f\n", soma.y);
+    printf("z: %.2f\n", soma.z);
+
+    return 0;
+}
+
+
+/* 6. Faça um programa que realize a leitura dos seguintes dados relativos a um conjunto de
+alunos: Matricula, Nome, Código da Disciplina, Nota1 e Nota2. Considere uma turma de
+até 10 alunos. Após ler todos os dados digitados, e depois de armazená-los em um vetor de
+estrutura, exibir na tela a listagem final dos alunos com as suas respectivas médias
+finais (use uma média ponderada: Nota1 com peso=1.0 e Nota2 com peso=2.0). */
+
+#include <stdio.h>
+
+struct Aluno 
+{
+    int matricula, codigoDisciplina;
+    float nota1, nota2, mediaFinal;
+    char nome[50];
+};
+
+int main() 
+{
+    int i, quantidadeAlunos;
+    struct Aluno alunos[10];
+
+    printf("Quantidade de Alunos (maximo 10): ");
+    scanf("%d", &quantidadeAlunos);
+    getchar(); 
+
+    if (quantidadeAlunos > 10) 
+    {
+        printf("Quantidade de alunos invalida. Maximo 10.\n");
+        return 0;
+    }
+
+    for (i = 0; i < quantidadeAlunos; i++) 
+    {
+        printf("\nAluno %d: \n", i + 1);
+
+        printf("Digite a matricula: ");
+        scanf("%d", &alunos[i].matricula);
+        getchar(); 
+
+        printf("Digite o nome: ");
+        fgets(alunos[i].nome, 50, stdin);
+
+        printf("Digite o codigo da disciplina: ");
+        scanf("%d", &alunos[i].codigoDisciplina);
+        getchar(); 
+
+        printf("Digite a nota 1: ");
+        scanf("%f", &alunos[i].nota1);
+        getchar(); 
+
+        printf("Digite a nota 2: ");
+        scanf("%f", &alunos[i].nota2);
+        getchar(); 
+
+        alunos[i].mediaFinal = (alunos[i].nota1 + 2 * alunos[i].nota2) / 3;
+    }
+
+    printf("\nListagem final dos alunos: \n");
+
+    for (i = 0; i < quantidadeAlunos; i++) 
+    {
+        printf("Aluno %d\n", i + 1);
+        printf("Matricula: %d\n", alunos[i].matricula);
+        printf("Nome: %s", alunos[i].nome);
+        printf("Codigo da disciplina: %d\n", alunos[i].codigoDisciplina);
+        printf("Media final: %.2f\n", alunos[i].mediaFinal);
+    }
+
+    return 0;
+}
+
+
+/* 7. Faça um programa que converte coordenadas polares para cartesianas:
+• Crie e leia um ponto em coordenada polar, composto por raio (r) e argumento (a)
+em radianos.
+• Crie outro ponto, agora em coordenada cartesiana, composto por x e y, sabendo
+que x = r ∗ cosa e y = r ∗ sina.
+No programa principal, leia um ponto em coordenada polar e mostre as coordenadas do
+Ponto gerado no plano cartesiano. */
+
+#include <stdio.h>
+#include <math.h>
+
+typedef struct 
+{
+    float r;
+    float a;
+} PolarCoordinate;
+
+typedef struct 
+{
+    float x;
+    float y;
+} CartesianCoordinate;
+
+CartesianCoordinate converterParaCartesiano(PolarCoordinate polar) 
+{
+    CartesianCoordinate cartesian;
+    cartesian.x = polar.r * cos(polar.a);
+    cartesian.y = polar.r * sin(polar.a);
+    return cartesian;
+}
+
+int main() 
+{
+    PolarCoordinate polar;
+    CartesianCoordinate cartesian;
+
+    printf("Entre com o ponto em coordenadas polares: \n");
+
+    printf("Raio (r): ");
+    scanf("%f", &polar.r);
+
+    printf("Argumento (a) em radianos: ");
+    scanf("%f", &polar.a);
+
+    cartesian = converterParaCartesiano(polar);
+
+    printf("Coordenadas cartesianas: \n");
+    
+    printf("x: %.2f\n", cartesian.x);
+    printf("y: %.2f\n", cartesian.y);
+
+    return 0;
+}
+
+
+/* 8. Faça um programa que armazene em um registro de dados (estrutura composta) os dados de um funcionario de uma empresa, compostos de: Nome, Idade, Sexo (M/F), CPF, ́
+Data de Nascimento, Código do Setor onde trabalha (0-99), Cargo que ocupa (string de ́
+até 30 caracteres) e Salário. Os dados devem ser digitados pelo usuário, armazenados ́
+na estrutura e exibidos na tela. */
+
+#include <stdio.h>
+
+struct Funcionario 
+{
+    int idade, codigoSetor;
+    float salario;
+    char sexo, cpf[12], dataNascimento[11], cargo[30], nome[50];
+};
+
+int main() 
+{
+    struct Funcionario funcionario;
+
+    printf("Nome do Funcionario: ");
+    fgets(funcionario.nome, 50, stdin);
+    getchar(); 
+
+
+    printf("Idade do Funcionario: ");
+    scanf("%d", &funcionario.idade);
+    getchar(); 
+
+    printf("Sexo do funcionario (M/F): ");
+    scanf("%c", &funcionario.sexo);
+    getchar(); 
+
+    printf("CPF do Funcionario: ");
+    fgets(funcionario.cpf, 12, stdin);
+    getchar(); 
+
+    printf("Data de nascimento do Funcionario (dd/mm/yyyy): ");
+    fgets(funcionario.dataNascimento, 11, stdin);
+    getchar(); 
+
+    printf("Setor do funcionario (0-99): ");
+    scanf("%d", &funcionario.codigoSetor);
+    getchar(); 
+
+    printf("Cargo do Funcionario: ");
+    fgets(funcionario.cargo, 30, stdin);
+    getchar(); 
+
+    printf("Salario do Funcionario: ");
+    scanf("%f", &funcionario.salario);
+    getchar(); 
+
+    printf("\nDados do funcionario: \n");
+
+    printf("Nome: %s", funcionario.nome);
+    printf("Idade: %d\n", funcionario.idade);
+    printf("Sexo: %c\n", funcionario.sexo);
+    printf("CPF: %s", funcionario.cpf);
+    printf("Data de Nascimento: %s", funcionario.dataNascimento);
+    printf("Setor: %d\n", funcionario.codigoSetor);
+    printf("Cargo: %s", funcionario.cargo);
+    printf("Salario: %.2f\n", funcionario.salario);
+
+    return 0;
+}
+
+
+
+/* 9. Faça um programa que faça operações simples de números complexos:
+• Crie e leia dois números complexos z e w, compostos por parte real e parte imaginária. ́
+• Apresente a soma, subtraçao e produto entre z e w, nessa ordem, bem como o
+módulo de ambos. ́*/
+
+#include <stdio.h>
+#include <math.h>
+
+typedef struct 
+{
+    float real;
+    float imag;
+} Complex;
+
+void lerComplexo(Complex *c) 
+{
+    printf("Parte Real: ");
+    scanf("%f", &c->real);
+    printf("Parte Imaginaria: ");
+    scanf("%f", &c->imag);
+}
+
+Complex somaComplexos(Complex z, Complex w) 
+{
+    Complex resultado;
+    resultado.real = z.real + w.real;
+    resultado.imag = z.imag + w.imag;
+    return resultado;
+}
+
+Complex subtraiComplexos(Complex z, Complex w) 
+{
+    Complex resultado;
+    resultado.real = z.real - w.real;
+    resultado.imag = z.imag - w.imag;
+    return resultado;
+}
+
+Complex multiplicaComplexos(Complex z, Complex w) 
+{
+    Complex resultado;
+    resultado.real = (z.real * w.real) - (z.imag * w.imag);
+    resultado.imag = (z.real * w.imag) + (z.imag * w.real);
+    return resultado;
+}
+
+float moduloComplexo(Complex c) 
+{
+    return sqrt((c.real * c.real) + (c.imag * c.imag));
+}
+
+int main () 
+{
+    Complex z, w;
+
+    printf("Entre com o primeiro numero complexo:\n");
+    lerComplexo(&z);
+
+    printf("Entre com o segundo numero complexo:\n");
+    lerComplexo(&w);
+
+    Complex soma = somaComplexos(z, w);
+    Complex subtracao = subtraiComplexos(z, w);
+    Complex multiplicacao = multiplicaComplexos(z, w);
+    float moduloZ = moduloComplexo(z);
+    float moduloW = moduloComplexo(w);
+
+    printf("Soma: %.2f + %.2fi\n", soma.real, soma.imag);
+    printf("Subtracao: %.2f + %.2fi\n", subtracao.real, subtracao.imag);
+    printf("Multiplicacao: %.2f + %.2fi\n", multiplicacao.real, multiplicacao.imag);
+    printf("Modulo de Z: %.2f\n", moduloZ);
+    printf("Modulo de W: %.2f\n", moduloW);
+
+    return 0;
+}
+
+
+/* 10. Utilizando uma estrutura, faca um programa que permita a entrada de nome, endereço e
+telefone de 5 pessoas e os imprima em ordem alfabética. ́*/
+
+#include <stdio.h>
+#include <string.h>
+
+struct Pessoa 
+{
+    char nome[50], endereco[100], telefone[20];
+};
+
+void ordenarPessoas(struct Pessoa pessoas[], int tamanho) 
+{
+    int i, j;
+    struct Pessoa temp;
+
+    for (i = 0; i < tamanho - 1; i++) 
+    {
+        for (j = 0; j < tamanho - 1 - i; j++) 
+        {
+            if (strcmp(pessoas[j].nome, pessoas[j + 1].nome) > 0) 
+            {
+                temp = pessoas[j];
+                pessoas[j] = pessoas[j + 1];
+                pessoas[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() 
+{
+    int i;
+    struct Pessoa pessoas[5];
+
+    printf("Entre com os dados das pessoas: \n");
+
+    for (i = 0; i < 5; i++) 
+    {
+        printf("\nPessoa %d:\n", i + 1);
+
+        printf("Nome: ");
+        fgets(pessoas[i].nome, 50, stdin);
+        pessoas[i].nome[strcspn(pessoas[i].nome, "\n")] = '\0'; 
+
+        printf("Endereco: ");
+        fgets(pessoas[i].endereco, 100, stdin);
+        pessoas[i].endereco[strcspn(pessoas[i].endereco, "\n")] = '\0'; 
+
+        printf("Telefone: ");
+        fgets(pessoas[i].telefone, 20, stdin);
+        pessoas[i].telefone[strcspn(pessoas[i].telefone, "\n")] = '\0'; 
+    }
+
+    ordenarPessoas(pessoas, 5);
+
+    printf("\nDados das pessoas em ordem alfabética: \n");
+
+    for (i = 0; i < 5; i++) 
+    {
+        printf("\nPessoa %d:\n", i + 1);
+        printf("Nome: %s\n", pessoas[i].nome);
+        printf("Endereco: %s\n", pessoas[i].endereco);
+        printf("Telefone: %s\n", pessoas[i].telefone);
+    }
+
+    return 0;
+}

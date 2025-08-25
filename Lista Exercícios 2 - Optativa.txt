@@ -1,0 +1,352 @@
+RAFAEL BELCHOR HEIN
+
+
+EXERCÍCIO 1
+
+/* 1. Faça um algoritmo para calcular a média final da disciplina de Programação, mostrar essa média final 
+e também uma mensagem informando se o aluno foi aprovado (média >= 7) ou reprovado. Considere duas avaliações. */
+
+#include <stdio.h>
+
+int main ()
+{
+    float n1, n2, media;
+
+    printf("Informe a sua primeira nota em Programacao: ");
+    scanf("%f", &n1);
+
+    printf("Informe a sua segunda nota em Programacao: ");
+    scanf("%f", &n2);
+
+    media = (n1 + n2) / 2;
+
+    if (media >= 7 && media <=10)
+    {
+        printf("Aluno Aprovado com Media %.2f", media);
+    }
+
+    else if (media >= 0 && media < 7)
+    {
+        printf("Aluno Reprovado com Media %.2f", media);
+    }
+
+    else
+    {
+        printf("Media Invalida");
+    }
+
+    return 0;
+
+}
+
+
+EXERCÍCIO 2
+
+/* 2. Faça um algoritmo que receba a idade do usuário e verifique se ele tem 18 anos ou mais. 
+Se a resposta for positiva escrever “maior de idade”, senão “menor de idade”. */
+
+#include <stdio.h>
+
+int main ()
+{
+    int idade;
+
+    printf("Informe a sua idade: ");
+    scanf("%d", &idade);
+
+    if (idade >= 18)
+    {
+        printf("Maior de Idade");
+    }
+
+    else
+    {
+        printf("Menor de Idade");
+    }
+
+    return 0;
+
+}
+
+
+EXERCÍCIO 3
+
+/* 3. Implemente um código para aprovar empréstimo bancário. O código deve pedir 3 informações: 
+valor do empréstimo, número de parcelas e salário do solicitante. 
+Aprovar empréstimo caso o valor das parcelas representem no máximo 30% do salário do solicitante. */
+
+#include <stdio.h>
+
+int main ()
+{
+    float salario, nParcelas, vParcelas, vEmprestimo;
+
+    printf("Informe o valor necessario de emprestimo: ");
+    scanf("%f", &vEmprestimo);
+
+    printf("Informe o numero desejado de parcelas: ");
+    scanf("%f", &nParcelas);
+
+    vParcelas = vEmprestimo / nParcelas;
+
+    printf("Valor da Parcela: %.2f\n", vParcelas);
+
+    printf("Informe o seu salario: ");
+    scanf("%f", &salario);
+
+    if (vParcelas <= (salario * 30 / 100))
+    {
+        printf("Emprestimo Aprovado.");
+    }
+
+    else
+    {
+        printf("Emprestimo Negado");
+    }
+
+    return 0;
+
+}
+
+
+EXERCÍCIO 4
+
+/* 4. Construa um algoritmo que leia o código de um determinado produto e mostre a sua classificação. 
+Utilize a estrutura se...então..senão 
+
+1 - Alimento não-perecível 
+2, 3 ou 4 - Alimento perecível 
+5 ou 6 - Vestuário 
+7 - Higiene pessoal 
+8, 9, 10 - Utensílios domésticos 
+Qualquer outro código - Inválido */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main ()
+{
+    int codigo;
+
+    printf("Informe o codigo do produto: ");
+    scanf("%d", &codigo);
+
+    if (codigo == 1)
+    {
+        printf("Codigo %d. Alimento Nao-Perecivel.", codigo);
+    }
+
+    else if (codigo == 2 || codigo == 3 || codigo == 4)
+    {
+        printf("Codigo %d. Alimento Perecivel.", codigo);
+    }
+
+    else if (codigo == 5 || codigo == 6)
+    {
+        printf("Codigo %d. Vestuario.", codigo);
+    }
+
+    else if (codigo == 7)
+    {
+        printf("Codigo %d. Higiene Pessoal.", codigo);
+    }
+
+    else if (codigo == 8 || codigo == 9 || codigo == 10)
+    {
+        printf("Codigo %d. Utensilios Domesticos.", codigo);
+    }
+
+    else
+    {
+        printf("Codigo de Produto Invalido.");
+    }
+
+    return 0;
+
+}
+
+
+EXERCÍCIO 5
+
+
+/* 5 Tendo como entrada o total vendido por um funcionário no mês de abril, faça um algoritmo que calcule e mostre a sua comissão e 
+seu salário bruto neste mês, sabendo que o seu salário base é R$1.200,00 e sua comissão é de 10% sobre o total vendido. 
+O funcionário só ganhará comissão se o valor total vendido for maior que R$2.000,00 */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main ()
+{
+    float totalVendido, comissao, salarioBase, salarioBruto;
+
+    printf("Informe o total vendido no mes de abril: ");
+    scanf("%f", &totalVendido);
+    
+    salarioBase = 1200;
+    comissao = totalVendido * 0.10;
+    
+    if (totalVendido > 2000)
+    {
+        salarioBruto = salarioBase + comissao;
+        printf("Salario Base: R$ %.2f\n", salarioBase);
+        printf("Valor de Comissao: R$ %.2f\n", comissao);
+        printf("Salario Total: R$ %.2f\n", salarioBruto);
+    }
+
+    else
+    {
+        comissao = 0;
+        printf("Salario Base: R$ %.2f\n", salarioBase);
+        printf("Valor de Comissao: R$ %.2f\n", comissao);
+        printf("Salario Total: R$ %.2f\n", salarioBase);
+    }
+
+    return 0;
+
+}
+
+
+EXERCÍCIO 6
+
+/* 6. Faça um programa que solicita ao usuário três valores correspondentes aos lados de um triângulo. 
+Informe se o triângulo é eqüilátero (possui 3 lados iguais), isósceles (possui dois lados iguais) ou escaleno (não possui lados iguais). */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main ()
+{
+    int a, b, c;
+
+    printf("Informe os valores dos 3 lados de um triangulo: ");
+    scanf("%d %d %d", &a, &b, &c);
+
+    if (a < b + c && b < a + c && c < a + b) 
+    { 
+        if (a == b && b == c)
+        {
+            printf("Triangulo Equilatero.");
+        }
+
+        else if (a == b || a == c || b == c)
+        {
+            printf("Triangulo Isosceles.");
+        }
+
+        else
+        {
+            printf("Triangulo Escaleno");
+        }
+    } 
+    
+    else 
+    {
+        printf("Triangulo Invalido");
+    }
+
+    return 0;
+    
+}
+
+
+EXERCÍCIO 7
+
+/* 7. Depois da liberação do governo para as mensalidades dos planos de saúde, as pessoas começaram a fazer pesquisas
+para descobrir um plano de saúde, não muito caro. Um vendedor de um plano de saúde apresentou a tabela a seguir. 
+
+Faça um algoritmo em que receba a idade de 1 pessoa, mostre essa idade e também mostre o valor que ela deverá pagar, 
+segundo a seguinte tabela: */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main ()
+{
+    int idade, valor;
+
+    printf("Informe a sua idade: ");
+    scanf("%d", &idade);
+
+    if (idade > 0 && idade <= 10)
+    {
+        valor = 30;
+    }
+
+    else if (idade > 10 && idade <= 29)
+    {
+        valor = 60;
+    }
+
+    else if (idade > 29 && idade <= 45)
+    {
+        valor = 120;
+    }
+
+    else if (idade > 45 && idade <= 59)
+    {
+        valor = 150;
+    }
+
+    else
+    {
+        valor = 300;
+    }
+
+    printf("Mensalidade para idade de %d anos: R$ %d", idade, valor);
+
+    return 0;
+}
+
+
+
+EXERCÍCIO 8
+
+
+/* 13. Construa um algoritmo para calcular o valor a ser pago pelo período de estacionamento do automóvel (PAG). 
+
+O usuário entra com os seguintes dados: hora (HE) e minuto (ME) de entrada, hora (HS) e minuto (MS) de saída. 
+
+Sabe-se que este estacionamento cobra hora cheia, ou seja, se passar um minuto ele cobra a hora inteira. 
+
+O valor cobrado pelo estacionamento é: 
+• R$ 4,00 para 1 hora de estacionamento 
+• R$ 6,00 para 2 horas de estacionamento 
+• R$ 1,00 por hora adicional (acima de 2 horas) */
+
+#include <stdio.h>
+
+int main ()
+{
+    int horaEntrada, minutoEntrada, horaSaida, minutoSaida, tempo;
+    float preco;
+
+    printf("Informe a Hora e os Minutos de entrada no Estacionamento: ");
+    scanf("%d %d", &horaEntrada, &minutoEntrada);
+
+    printf("Informe a Hora e os Minutos de saida do Estacionamento: ");
+    scanf("%d %d", &horaSaida, &minutoSaida);
+
+    tempo = (horaSaida - horaEntrada) * 60 + (minutoSaida - minutoEntrada);
+
+    if (tempo <= 60)
+    {
+        preco = 4.0;
+    }
+
+    else if (tempo <= 120)
+    {
+        preco = 6.0;
+    }
+
+    else
+    {
+        preco = 6.0 + (tempo - 120) / 60;
+    }
+
+    printf("Tempo de uso do Estacionamento: %d minutos\n", tempo);
+    printf("Preco: R$ %.2f", preco);
+    
+    return 0;
+
+}

@@ -1,0 +1,410 @@
+/* 1. Crie uma função que recebe como parâmetro um número inteiro e devolve o seu dobro. */
+
+#include <stdio.h>
+
+int dobrar (int n)
+{
+    return n * 2;
+}
+
+int main ()
+{
+    int num, res;
+
+    printf("Informe um numero inteiro: ");
+    scanf("%d", &num);  
+
+    res = dobrar (num);
+
+    printf("Dobro do valor informado: %d", res);
+
+    return 0;
+}
+
+
+/* 2. Faça uma função que receba a data atual (dia, mês e ano em inteiro) e exiba-a na tela
+no formato textual por extenso. Exemplo: Data: 01/01/2000, Imprimir: 1 de janeiro de
+2000. */
+
+#include <stdio.h>
+
+void dataExtenso(int dia, int mes, int ano) 
+{
+    char* meses[] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+
+    printf("Data: %02d/%02d/%04d\n", dia, mes, ano);
+    printf("Imprimir: %d de %s de %d\n", dia, meses[mes - 1], ano);
+}
+
+int main() 
+{
+    int dia, mes, ano;
+
+    printf("Digite a data (dia, mes e ano): ");
+    scanf("%d %d %d", &dia, &mes, &ano);
+
+    dataExtenso(dia, mes, ano);
+
+    return 0;
+}
+
+
+/* 3. Faça uma função para verificar se um número é positivo ou negativo. Sendo que o valor
+de retorno será 1 se positivo, -1 se negativo e 0 se for igual a 0. */
+
+#include <stdio.h>
+
+int verificador(int numero)
+{
+    if (numero > 0) 
+    {
+        return 1;
+    } 
+    else if (numero < 0) 
+    {
+        return -1;
+    } 
+    else 
+    {
+        return 0;
+    }
+}
+
+int main () 
+{
+    int numero, resultado;
+    
+    printf("Informe um numero inteiro: ");
+    scanf("%d", &numero);
+
+    resultado = verificador (numero);
+
+    if (resultado == 1) 
+    {
+        printf("Numero Positivo.\n");
+    } else if (resultado == -1) 
+    {
+        printf("Numero Negativo.\n");
+    } else 
+    {
+        printf("Numero igual a Zero.\n");
+    }
+
+    return 0;
+}
+
+
+/* 4. Faça uma funçao para verificar se um nmero e um quadrado perfeito. Um quadrado
+perfeito e um número inteiro não negativo que pode ser expresso como o quadrado de
+outro número inteiro. Ex: 1, 4, 9... */
+
+int verificador(int numero) 
+{
+    int i;
+
+    for (i = 1; i * i <= numero; i++) 
+    {
+        if (i * i == numero) {
+            return 1; // Se for quadrado perfeito
+        }
+    }
+    return 0; // Se não for
+}
+
+int main ()
+{
+    int numero;
+
+    printf("Informe um numero inteiro: ");
+    scanf("%d", &numero);
+
+    if (verificador (numero))
+    {
+        printf("Quadrado Perfeito.\n");
+    }
+
+    else
+    {
+        printf("Nao Quadrado Perfeito.\n");
+    }
+
+    return 0;
+}
+
+
+
+/*  5. Faça uma função e um programa de teste para o cálculo do volume de uma esfera. ́
+Sendo que o raio é passado por parâmetro.
+V = 4/3 ∗ π ∗ R3 */
+
+#include <stdio.h>
+
+float calcularVolume(float raio) 
+{
+    float volume = (4.0 / 3.0) * 3.14 * raio * raio * raio;
+    return volume;
+}
+
+int main() 
+{
+    float raio, volume;
+
+    printf("Informe o  Raio da Esfera: ");
+    scanf("%f", &raio);
+
+    volume = calcularVolume (raio);
+
+    printf("Volume da Esfera: %.2f\n", volume);
+
+    return 0;
+}
+
+
+/* 6. Faça uma função ̧ao que receba 3 números inteiros como parâmetro, representando
+horas, minutos e segundos, e os converta em segundos. */
+
+#include <stdio.h>
+
+int conversor(int horas, int minutos, int segundos) 
+{
+    int novoSegundos = horas * 3600 + minutos * 60 + segundos;
+    return novoSegundos;
+}
+
+int main() 
+{
+    int horas, minutos, segundos, totalSegundos;
+
+    printf("Digite as horas: ");
+    scanf("%d", &horas);
+
+    printf("Digite os minutos: ");
+    scanf("%d", &minutos);
+
+    printf("Digite os segundos: ");
+    scanf("%d", &segundos);
+
+    totalSegundos = conversor(horas, minutos, segundos);
+
+    printf("Total de Segundos: %d\n", totalSegundos);
+
+    return 0;
+}
+
+
+
+/* 7. Faça uma função que receba uma temperatura em graus Celsius e retorne-a
+convertida em graus Fahrenheit. A fórmula de conversão é F = C ∗ (9.0/5.0) + 32.0, sendo
+F a temperatura em Fahrenheit e C a temperatura em Celsius. */
+
+#include <stdio.h>
+
+float conversor(float celsius) 
+{
+    float fahrenheit = celsius * (9.0 / 5.0) + 32.0;
+    return fahrenheit;
+}
+
+int main() 
+{
+    float celsius, fahrenheit;
+
+    printf("Temperatura em Graus Celsius: ");
+    scanf("%f", &celsius);
+
+    fahrenheit = conversor (celsius);
+
+    printf("Temperatura em Graus Fahrenheit: %.2lf\n", fahrenheit);
+
+    return 0;
+}
+
+
+
+/* 8. Sejam a e b os catetos de um triângulo, onde a hipotenusa é obtida pela equação
+hipotenusa =√a 2 + b2. Fac ̧a uma função ̧ao que receba os valores de a e b e calcule o
+valor da hipotenusa através da equação.*/
+
+#include <stdio.h>
+#include <math.h>
+
+double calcularHipotenusa(double a, double b) 
+{
+    double hipotenusa = sqrt(pow(a, 2) + pow(b, 2));
+    return hipotenusa;
+}
+
+int main() 
+{
+    double a, b;
+    
+    printf("Cateto A: ");
+    scanf("%lf", &a);
+
+    printf("Cateto B: ");
+    scanf("%lf", &b);
+
+    double hipotenusa = calcularHipotenusa(a, b);
+
+    printf("Hipotenusa: %.2lf\n", hipotenusa);
+
+    return 0;
+}
+
+
+
+/* 9. Faça uma função que receba a altura e o raio de um cilindro circular e retorne o volume
+do cilindro. O volume de um cilindro circular e calculado por meio da seguinte f ́ormula: ́
+V = π ∗ raio*raio ∗ altura, onde π = 3.141592*/
+
+#include <stdio.h>
+
+float calcularVolume (float raio, float altura)
+{
+    float volume = 3.14 * raio * raio * altura;
+    return volume;
+}
+
+int main ()
+{
+    float raio, altura, volume;
+
+    printf("Raio do Cilindro: ");
+    scanf("%f", &raio);
+
+    printf("Altura do Cilindro: ");
+    scanf("%f", &altura);
+
+    volume = calcularVolume (raio, altura);
+
+    printf("Volume do Cilindro: %.2f", volume);
+
+    return 0; 
+}
+
+
+/* 10. Faça uma função que receba dois números e retorne qual deles é o maior. */
+
+#include <stdio.h>
+
+int encontrarMaior(int num1, int num2) 
+{
+    if (num1 > num2) 
+    {
+        return num1;
+    } 
+    else 
+    {
+        return num2;
+    }
+}
+
+int main() 
+{
+    int n1, n2, maior;
+
+    printf("Primeiro Numero: ");
+    scanf("%d", &n1);
+
+    printf("Segundo Numero: ");
+    scanf("%d", &n2);
+
+    maior = encontrarMaior(n1, n2);
+
+    printf("Maior Numero: %d\n", maior);
+
+    return 0;
+}
+
+
+/* 11. Elabore uma função que receba três notas de um aluno como parâmetros e uma letra.
+Se a letra for A, a função deverá calcular a média aritmética das notas do aluno; se for P,
+deverá calcular a média ponderada, com pesos 5, 3 e 2. */
+
+#include <stdio.h>
+
+float calcularMedia(float nota1, float nota2, float nota3, char tipoMedia) 
+{
+    if (tipoMedia == 'A') 
+    {
+        return (nota1 + nota2 + nota3) / 3.0;
+    } 
+    else if (tipoMedia == 'P') 
+    {
+        return (nota1 * 5 + nota2 * 3 + nota3 * 2) / (5 + 3 + 2);
+    } 
+    else 
+    {
+        printf("Tipo Invalido. Digite 'A' para Media Aritmetica ou 'P' para Ponderada.\n");
+        return -1;
+    }
+}
+
+int main () 
+{
+    float nota1, nota2, nota3;
+    char tipoMedia;
+    
+    printf("Primeira Nota: ");
+    scanf("%f", &nota1);
+    
+    printf("Segunda Nota: ");
+    scanf("%f", &nota2);
+    
+    printf("Terceira Nota: ");
+    scanf("%f", &nota3);
+    
+    printf("Digite 'A' para Media Aritmetica ou 'P' para Ponderada: ");
+    scanf(" %c", &tipoMedia);
+    
+    float media = calcularMedia(nota1, nota2, nota3, tipoMedia);
+    
+    if (media != -1) {
+        printf("A média do aluno é: %.2f\n", media);
+    }
+    
+    return 0;
+}
+
+
+/* 12. Escreva uma função que receba um número inteiro maior do que zero e retorne a soma
+de todos os seus algarismos. Por exemplo, o número 251 corresponde a o valor 8 (2 + 5 +
+1). Se o número lido não for maior do que zero, o programa termina com a mensagem
+“Numero invalido”. */
+
+#include <stdio.h>
+
+int somarAlgarismos(int numero) 
+{
+    if (numero <= 0) 
+    {
+        printf("Invalido.\n");
+        return -1;
+    }
+    
+    int soma = 0;
+
+    while (numero > 0) 
+    {
+        soma += numero % 10; 
+        numero /= 10;
+    }
+    
+    return soma;
+}
+
+int main () 
+{
+    int numero, soma; 
+    printf("Informe um Numero Inteiro maior do que zero: ");
+    scanf("%d", &numero);
+    
+    soma = somarAlgarismos(numero);
+    
+    if (soma != -1) 
+    {
+        printf("Soma: %d\n", soma);
+    }
+    
+    return 0;
+}

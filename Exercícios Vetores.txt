@@ -1,0 +1,169 @@
+EXERCÍCIO 1
+
+/* 1. Faça um programa que possua um vetor denominado A que armazene 6 números inteiros. O programa deve executar os seguintes passos:
+
+(a) Atribua os seguintes valores a esse vetor: 1, 0, 5, -2, -5, 7.
+(b) Armazene em uma variável inteira (simples) a soma entre os valores das
+posições A[0], A[1] e A[5] do vetor e mostre na tela esta soma.
+(c) Modifique o vetor na posição 4, atribuindo a esta posição o valor 100. ̃
+(d) Mostre na tela cada valor do vetor A, um em cada linha. */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main ()
+{
+    int A[6] = {1, 0, 5, -2, -5, 7};
+    int i, soma = A[0] + A[1] + A[5];
+
+    printf("Soma: %d\n", soma);
+
+    A[4] = 100;
+
+    printf("Valores do Vetor A: \n");
+
+    for (i = 0; i < 6; i++)
+    {
+        printf("%d\n", A[i]);
+    }
+
+    return 0;
+}
+
+
+EXERCÍCIO 2
+
+/* 2. Crie um programa que lê 6 valores inteiros e, em seguida, mostre na tela os valores lidos. */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() 
+{
+    int i, valores [6];
+
+    printf("Informe 6 valores inteiros: ");
+
+    for (i = 0; i < 6; i++)
+    {
+        scanf("%d", &valores[i]);
+    }
+
+    printf("Valores lidos: \n");
+
+    for (i = 0; i < 6; i++) 
+    {
+        printf("%d\n", valores[i]);
+    }
+
+    return 0;
+}
+
+EXERCÍCIO 3
+
+/* 3. Ler um conjunto de números reais, armazenando-o em vetor e calcular o quadrado das ́
+componentes deste vetor, armazenando o resultado em outro vetor. Os conjuntos temˆ
+10 elementos cada. Imprimir todos os conjuntos. */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() 
+{
+    int i;
+    float v[10], vQuadrado[10];
+
+    printf("Informe os 10 numeros reais do Conjunto: \n");
+
+    for (i = 0; i < 10; i++)
+    {
+        scanf("%f", &v[i]);
+    }
+
+    for (i = 0; i < 10; i++)
+    {
+        vQuadrado[i] = v[i] * v[i];
+    }
+
+    printf("Conjunto: ");
+
+    for (i = 0; i < 10; i++) 
+    {
+        printf("%.2f ", v[i]);
+    }
+
+    printf("\n");
+
+    printf("Conjunto ao Quadrado: ");
+
+    for (i = 0; i < 10; i++)
+    {
+        printf("%.2f ", vQuadrado[i]);
+    }
+
+    printf("\n");
+
+    return 0;
+}
+
+
+EXERCÍCIO 4
+
+
+/* 4. Faça um programa que leia um vetor de 8 posições e, em seguida, leia também dois valores X e Y 
+quaisquer correspondentes a duas posições no vetor. Ao final seu programa deverá escrever a soma 
+dos valores encontrados nas respectivas posições X e Y . */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() 
+{
+    int i, x, y, soma, vetor [8];
+
+    printf("Informe os valores do vetor: \n");
+
+    for (i = 0; i < 8; i++)
+    {
+        scanf("%d", &vetor[i]);
+    }
+
+    printf("Informe os valores de X e Y: \n");
+    scanf("%d %d", &x, &y);
+
+    soma = vetor[x] + vetor[y];
+
+    printf("Soma dos Valores das posicoes %d e %d: %d", x, y, soma);
+
+    return 0;
+}
+
+
+EXERCÍCIO 5
+
+
+/* 5. Leia um vetor de 10 posições. Contar e escrever quantos valores pares ele possui */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() 
+{
+    int i, pares = 0, vetor[10];
+
+    printf("Informe os 10 valores do Vetor: \n");
+
+    for (i = 0; i < 10; i++)
+    {
+        scanf("%d", &vetor[i]);
+
+        if (vetor[i] % 2 == 0)
+        {
+            pares++;
+        }
+    }
+
+    printf("O Vetor possui %d valores pares", pares);
+    
+    return 0;
+}

@@ -1,0 +1,364 @@
+/* 1. Escreva um programa que declare um inteiro, um real e um char, e ponteiros para inteiro, real, e char. Associe as variaveis aos ponteiros (use &). Modifique os valores de ´
+cada variavel usando os ponteiros. Imprima os valores das vari ´ aveis antes e ap ´ os a ´
+modificac¸ao. */
+
+#include <stdio.h>
+
+int main() {
+    
+    int inteiro = 10;
+    float real = 3.14;
+    char caractere = 'A';
+
+    int *ptrInteiro = &inteiro;
+    float *ptrReal = &real;
+    char *ptrCaractere = &caractere;
+
+    printf("Valores antes da modificacao:\n");
+    printf("Inteiro: %d\n", inteiro);
+    printf("Real: %.2f\n", real);
+    printf("Caractere: %c\n", caractere);
+
+    *ptrInteiro = 20;
+    *ptrReal = 2.71;
+    *ptrCaractere = 'B';
+
+    printf("\nValores apos a modificacao:\n");
+    printf("Inteiro: %d\n", inteiro);
+    printf("Real: %.2f\n", real);
+    printf("Caractere: %c\n", caractere);
+
+    return 0;
+}
+
+/* 2. Escreva um programa que contenha duas variaveis inteiras. Compare seus endereços e exiba o maior endereço */
+
+#include <stdio.h>
+
+int main () {
+
+    int a = 1;
+    int b = 2;
+
+    int *pA = &a;
+    int *pB = &b;
+
+    printf("Endereco Variavel A: %d\n", a);
+    printf("Endereco Variavel B: %d\n", b);
+
+    if (pA > pB) {
+        printf("Endereco de A maior.\n");
+    }
+    else if (pB > pA) {
+        printf("Endereco de B maior.\n");
+    }
+    else {
+        printf("Enderecos Iguais.\n");
+    }
+
+    return 0;
+}
+
+/* 3. Escreva um programa que contenha duas variaveis inteiras. Leia essas variáveis do teclado. Em seguida, compare seus 
+endereços e exiba o conteudo do maior endereço */
+
+#include <stdio.h>
+
+int main () {
+
+    int a, b;
+
+    int *pA = &a;
+    int *pB = &b;
+
+    printf("Informe o endereco de A: \n");
+    scanf("%d", &a);
+    printf("Informe o endereco de B: \n");
+    scanf("%d", &b);
+
+    printf("Endereco Variavel A: %d\n", a);
+    printf("Endereco Variavel B: %d\n", b);
+
+    if (pA > pB) {
+        printf("Endereco de A maior.\n");
+    }
+    else if (pB > pA) {
+        printf("Endereco de B maior.\n");
+    }
+    else {
+        printf("Enderecos Iguais.\n");
+    }
+
+    return 0;
+}
+
+
+
+/* 4. Faça um programa que leia 2 valores inteiros e chame uma função que receba estas
+2 variaveis e troque o seu conteudo, ou seja, esta funcao é chamada passando duas 
+variaveis A e B. Por exemplo, Apos a execucao da funcao, A tera o valor de B e B
+tera o valor de A. */
+
+#include <stdio.h>
+
+void trocaAB (int *pA, int *pB)
+{
+    int temp = *pA;
+    *pA = *pB;
+    *pB = temp;
+}
+
+int main ()
+{
+    int a, b;
+
+    printf("Informe o valor de A: \n");
+    scanf("%d", &a);
+    printf("Informe o valor de B: \n");
+    scanf("%d", &b);
+
+    printf("Valores Originais: %d, %d\n", a, b);
+
+    trocaAB(&a, &b);
+
+    printf("Valores Trocados: %d, %d\n", a, b);
+
+    return 0;
+}
+
+
+/* 5. Faça um programa que leia dois valores inteiros e chame uma funcao que receba estes
+2 valores de entrada e retorne o maior valor na primeira variavel e o menor valor na
+segunda variavel. Escreva o conteudo das 2 variaveis na tela.*/
+
+void encontrarMM (int a, int b, int *maior, int *menor)
+{
+    if (a > b)
+    {
+        *maior = a;
+        *menor = b;
+    } else {
+        *maior = b;
+        *menor = a;
+    }
+}
+
+int main ()
+{
+    int v1, v2, maior, menor;
+
+    printf("Primeiro Valor: ");
+    scanf("%d", &v1);
+
+    printf("Segundo Valor: ");
+    scanf("%d", &v2);
+
+    encontrarMM(v1, v2, &maior, &menor);
+
+    printf("Maior: %d\n", maior);
+    printf("Menor: %d\n", menor);
+
+    return 0;
+}
+
+/* 6. Elaborar um programa que leia dois valores inteiros (A e B). Em seguida faça uma função
+que retorne a soma do dobro dos dois numeros lidos. A função deverá armazenar o dobro de A na propria variavel A e o 
+dobro de B na propria variavel B */
+
+#include <stdio.h>
+
+int calcularSomaDobro(int *a, int *b) 
+{
+    *a = 2 * (*a);
+    *b = 2 * (*b);
+    return (*a + *b);
+}
+
+int main() 
+{
+    int v1, v2, resultado;
+
+    printf("Digite o primeiro valor: ");
+    scanf("%d", &v1);
+
+    printf("Digite o segundo valor: ");
+    scanf("%d", &v2);
+
+    resultado = calcularSomaDobro(&v1, &v2);
+
+    printf("Resultado: %d\n", resultado);
+    printf("Novo valor de A: %d\n", v1);
+    printf("Novo valor de B: %d\n", v2);
+
+    return 0;
+}
+
+
+/******************************************************************************
+7 - Crie um programa que contenha uma funcao que permita passar por parametro dois numeros inteiros A e B. 
+A funcao devera calcular a soma entre estes dois numeros e armazenar o resultado na variavel A. Esta funcao nao devera possuir
+retorno, mas devera modificar o valor do primeiro parametro. Imprima os valores de A e B na funcao principal.
+
+*******************************************************************************/
+#include <stdio.h>
+
+void calcularSoma(int *a, int b) {
+    *a = *a + b;
+}
+
+int main() {
+    int numA = 5;
+    int numB = 10;
+
+    printf("Valores antes da Funcao:\n");
+    printf("A: %d\n", numA);
+    printf("B: %d\n", numB);
+
+    calcularSoma(&numA, numB);
+
+    printf("\nValores apos a Funcao:\n");
+    printf("A: %d\n", numA);
+    printf("B: %d\n", numB);
+
+    return 0;
+}
+
+
+/* 11. Crie um programa que contenha um array contendo 5 elementos inteiros. Leia esse array
+do teclado e imprima o endereço das posições contendo valores pares */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main ()
+{
+    int i, vetor[5];
+
+#include <stdio.h>
+
+    printf("Informe 5 numeros inteiros: \n");
+
+    for (i = 0; i < 5; i++) 
+    {
+        scanf("%d", &vetor[i]);
+    }
+
+    printf("Endereco das posicoes de valores pares: \n");
+
+    for (i = 0; i < 5; i++) 
+    {
+        if (vetor[i] % 2 == 0) 
+        {
+            printf("Posicao %d \n", vetor[i]);
+        }
+    }
+
+    return 0;
+}
+
+
+/* 18. Implemente uma função que calcule a area da superfíıcie e o volume de uma esfera de
+raio R. Essa função deve obedecer ao protótipo:
+void calc_esfera(float R, float *area, float *volume)
+A area da superfície e o volume sao dados, respectivamente, por: ˜
+A = 4 ∗ p ∗ R2
+V = 4/3 ∗ p ∗ R3 */
+
+#include <stdio.h>
+
+void calc_esfera(float R, float *area, float *volume)
+{
+    *area = 4 * 3.14 * R * R;
+    *volume = (4.0 / 3.0) * 3.14 * R * R * R;
+}
+
+int main ()
+{
+    float raio, area, volume;
+
+    printf("Informe o Raio: \n");
+    scanf("%f", &raio);
+    
+    calc_esfera (raio, &area, &volume);
+
+    printf("Area da Esfera: %.2f\n", area);
+    printf("Volume da Esfera: %.2f\n", volume);
+
+    return 0;
+}
+
+
+/* 26. Implemente uma função que calcule as raízes de uma equação do segundo grau do tipo ˜
+ax^2 + bx + c = 0.  A variavel A tem que ser diferente de zero.
+• Se ∆ < 0 nao existe real
+• Se ∆ = 0 existe uma raiz real.
+• Se ∆ ≥ 0 existem duas ra´ızes reais.
+
+Essa função deve obedecer ao seguinte prototipo:
+
+int raizes(float A,float B,float C,float * X1,float * X2);
+
+A função deve ter como valor de retorno o nuumero de raizes reais e distintas da
+equação. Se existirem raízes reais, seus valores devem ser armazenados nas variaveis apontadas por X1 e X2. */
+
+#include <stdio.h>
+#include <math.h>
+
+int raizes(float A, float B, float C, float *X1, float *X2) 
+{
+    float delta = (B * B) - (4 * A * C);
+
+    if (delta < 0)
+    {
+        return 0;
+    } else if (delta == 0) 
+    {
+        *X1 = -B / (2 * A);
+        *X2 = *X1;
+        return 1;
+    } else 
+    {
+        *X1 = (-B + sqrt(delta)) / (2 * A);
+        *X2 = (-B - sqrt(delta)) / (2 * A);
+        return 2;
+    }
+}
+
+int main() 
+{
+    int nRaizes;
+    float a, b, c, x1, x2;
+
+    printf("Valor de A: ");
+    scanf("%f", &a);
+
+    if (a == 0) 
+    {
+        printf("Invalida como Equacao do Segundo Grau.\n");
+        return 0;
+    }
+
+    printf("Valor de B: ");
+    scanf("%f", &b);
+
+    printf("Valor de C: ");
+    scanf("%f", &c);
+
+    nRaizes = raizes(a, b, c, &x1, &x2);
+
+    if (nRaizes == 0) 
+    { 
+        printf("Equacao nao possui Raizes Reais.\n");
+    } else if (nRaizes == 1) 
+    {
+        printf("Equacao possui uma Raiz Real:\n");
+        printf("X = %.2f\n", x1);
+    } else 
+    {
+        printf("Equacao possui duas Raizes Reais:\n");
+        printf("x' = %.2f\n", x1);
+        printf("x'' = %.2f\n", x2);
+    }
+
+    return 0;
+}

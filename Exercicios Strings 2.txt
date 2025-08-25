@@ -1,0 +1,403 @@
+/* 11. Faça um programa que receba do usuário uma String. O programa imprime a String sem
+suas vogais. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int i;
+    char str[10];
+
+    printf("Informe uma string: \n");
+    scanf("%s", &str);
+
+    for (i = 0; i <= 10; i++)
+    {
+        if (str[i] == 'a' || str[i] == 'A')
+        {
+            str[i] = ' ';
+        }
+
+        else if (str[i] == 'e' || str[i] == 'E')
+        {
+            str[i] = ' ';
+        }
+
+        else if (str[i] == 'i' || str[i] == 'I')
+        {
+            str[i] = ' ';
+        }
+
+        else if (str[i] == 'o' || str[i] == 'O')
+        {
+            str[i] = ' ';
+        }
+
+        else if (str[i] == 'u' || str[i] == 'U')
+        {
+            str[i] = ' ';
+        }
+
+        else
+        {
+            str[i] = str[i];
+        }
+    }
+
+    printf("\nString Informada SEM AS VOGAIS: %s", str);
+
+    return 0;
+}
+
+
+
+/* 12. Faça um programa que receba uma palavra e calcule quantas vogais (a, e, i, o, u) possui
+essa palavra. Entre com um caractere (vogal ou consoante) e substitua todas as vogais
+da palavra dada por esse caractere. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+    int i, vogais = 0;
+    char palavra[100], caractere;
+
+    printf("Informe uma palavra: ");
+    scanf("%s", &palavra[i]);
+
+    printf("Agora informe um caractere qualquer: ");
+    scanf(" %c", &caractere);
+
+    for (i = 0; palavra[i] != '\0'; i++)
+    {
+        if (palavra[i] == 'a' || palavra[i] == 'e' || palavra[i] == 'i' ||palavra[i] == 'o' ||palavra[i] == 'u')
+        {
+            vogais++;
+        }
+    }
+
+    for (i = 0; palavra[i] != '\0'; i++)
+    {
+        if (palavra[i] == 'a' || palavra[i] == 'e' || palavra[i] == 'i' ||palavra[i] == 'o' ||palavra[i] == 'u')
+        {
+            palavra[i] = caractere;
+        }
+    }
+
+    printf("A palavra possui %d vogais.\n", vogais);
+    printf("Palavra com as vogais trocadas: %s\n", palavra);
+
+    return 0;
+} 
+
+
+
+/* 13. Ler uma frase e contar quantos caracteres são espaços em brancos. Lembre-se que
+uma frase e um conjunto de caracteres (vetor). */
+
+#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+    int i, qtdEspacos = 0;
+    char frase[100];
+
+    printf("Informe uma frase: \n");
+    fgets(frase, sizeof(frase), stdin);
+
+    for (i = 0; frase[i] != '\0'; i++)
+    {
+        if (frase[i] == ' ')
+        {
+            qtdEspacos++;
+        } 
+    }
+
+    printf("Espacos em Branco: %d", qtdEspacos);
+
+    return 0;
+} 
+
+
+
+/* 14. Faça um programa que leia uma palavra (máximo de 50 letras) e some 1 no valor ASCII
+de cada caractere da palavra. Imprima a String resultante. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int i, tamanho;
+    char palavra[51];
+
+    printf("Informe uma palavra de no maximo 50 letras): ");
+    scanf("%s", &palavra);
+
+    tamanho = strlen(palavra);
+
+    if (tamanho > 50) 
+    {
+        printf("Palavra ultrapassa o limite de 50 letras.\n");
+    }
+
+    for (i = 0; i < tamanho; i++) 
+    {
+        palavra[i] = palavra[i] + 1;
+    }
+
+    printf("String Resultante: %s\n", palavra);
+
+    return 0;
+}
+
+
+/* 15. Escreva um programa para converter uma cadeia de caracteres de letras maiúsculas em
+letras minusculas. Dica: some 32 dos caracteres cujo código ASCII está entre 65 e 90. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int i = 0;
+    char string[100];
+
+    printf("Informe uma cadeia de caracteres: \n");
+    fgets(string, sizeof(string), stdin);
+
+    while (string[i] != '\0') 
+    {
+        if (string[i] >= 'A' && string[i] <= 'Z') 
+        {
+            string[i] += 32;
+        }
+        i++;
+    }
+
+    printf("Cadeia Convertida: %s\n", string);
+
+    return 0;
+}
+
+
+/* 16. Leia uma cadeia de caracteres e converta todos os caracteres para maiuscula. Dica:
+subtraia 32 dos caracteres cujo código ASCII está entre 97 e 122. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int i = 0;
+    char string[100];
+
+    printf("Informe uma cadeia de caracteres: \n");
+    fgets(string, sizeof(string), stdin);
+
+    while (string[i] != '\0') 
+    {
+        if (string[i] >= 'a' && string[i] <= 'z') 
+        {
+            string[i] -= 32;
+        }
+        i++;
+    }
+
+    printf("Cadeia Convertida: %s\n", string);
+
+    return 0;
+}
+
+
+/* 17. Leia um vetor contendo letras de uma frase (inclusive os espaços em branco). Retirar os
+espaços em branco do vetor e depois escrever o vetor resultante. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int i = 0, j = 0;
+    char vetor[100], resultado[100];
+
+    printf("Informe um vetor que contenha letras e espacos em branco: ");
+    fgets(vetor, sizeof(vetor), stdin);
+
+    while (vetor[i] != '\0') 
+    {
+        if (vetor[i] != ' ') 
+        {
+            resultado[j] = vetor[i];
+            j++;
+        }
+        i++;
+    }
+    
+    resultado[j] = '\0';
+
+    printf("Vetor Resultante: %s\n", resultado);
+
+    return 0;
+}
+
+
+
+/* 18. Faça um programa em que troque todas as ocorrências de uma letra L1 pela letra L2 em
+uma string. A string e as letras L1 e L2 devem ser fornecidas pelo usuário. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int i = 0;
+    char l1, l2, string[100];
+
+    printf("Informe uma String: ");
+    fgets(string, sizeof(string), stdin);
+
+    printf("Informe a letra L1 a ser substituida: ");
+    scanf(" %c", &l1);
+
+    printf("Informe a letra substituta (L2): ");
+    scanf(" %c", &l2);
+
+    while (string[i] != '\0') 
+    {
+        if (string[i] == l1) 
+        {
+            string[i] = l2;
+        }
+        i++;
+    }
+
+    printf("String Modificada: %s\n", string);
+
+    return 0;
+}
+
+
+
+/* 19. Escreva um programa que leia a idade e o primeiro nome de 10 pessoas. Seu programa
+deve terminar quando uma idade negaƟva for digitada. Ao terminar, seu programa deve
+escrever o nome e a idade das pessoas mais jovens e mais velhas. */
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_PESSOAS 10
+
+typedef struct 
+{
+    char nome[50];
+    int idade;
+} Pessoa;
+
+int main() 
+{
+    Pessoa pessoas[MAX_PESSOAS];
+    int i, totalPessoas = 0, idadeMaisJovem, idadeMaisVelha;
+    char nomeMaisJovem[50], nomeMaisVelho[50];
+
+    for (i = 0; i < MAX_PESSOAS; i++) 
+    {
+        printf("Digite o nome da pessoa %d: ", i + 1);
+        scanf("%s", pessoas[i].nome);
+
+        printf("Digite a idade da pessoa %d: ", i + 1);
+        scanf("%d", &pessoas[i].idade);
+
+        if (pessoas[i].idade < 0) 
+        {
+            totalPessoas = i;
+            break;
+        }
+        totalPessoas++;
+    }
+
+    idadeMaisJovem = pessoas[0].idade;
+    idadeMaisVelha = pessoas[0].idade;
+
+    for (i = 1; i < totalPessoas; i++) 
+    {
+        if (pessoas[i].idade < idadeMaisJovem) 
+        {
+            idadeMaisJovem = pessoas[i].idade;
+            strcpy(nomeMaisJovem, pessoas[i].nome);
+        }
+
+        if (pessoas[i].idade > idadeMaisVelha) 
+        {
+            idadeMaisVelha = pessoas[i].idade;
+            strcpy(nomeMaisVelho, pessoas[i].nome);
+        }
+    }
+
+    printf("Pessoa Mais Jovem: %s, %d anos\n", nomeMaisJovem, idadeMaisJovem);
+    printf("Pessoa Mais Velha: %s, %d anos\n", nomeMaisVelho, idadeMaisVelha);
+
+    return 0;
+}
+
+
+
+/* 20. Faça um programa que preencha uma matriz de string com os modelos de cinco carros
+(exemplos de modelos: Fusca, Gol, Vectra, etc.). 
+Em seguida, preencha um vetor com o
+consumo desses carros, isto e, quantos quilômetros cada um deles faz com um litro de ˆ
+combustivel. Calcule e mostre:
+
+(a) O modelo de carro mais econômico;
+(b) Quantos litros de combusơvel cada um dos carros cadastrados consome para percorrer uma distância de 1.000 quilômetros. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int i, carroEco = 0;
+    float consumo[5], litros1000Km;
+    char modelos[5][50];
+
+    printf("Informe os modelos dos 5 carros: \n");
+
+    for (i = 0; i < 5; i++) 
+    {
+        printf("Carro %d: ", i + 1);
+        fgets(modelos[i], sizeof(modelos[i]), stdin);
+        modelos[i][strcspn(modelos[i], "\n")] = '\0';
+    }
+
+    printf("\n Informe o consumo em KM/L dos 5 carros: \n");
+
+    for (i = 0; i < 5; i++) 
+    {
+        printf("Consumo do %s: ", modelos[i]);
+        scanf("%f", &consumo[i]);
+        getchar(); 
+    }
+
+    for (i = 1; i < 5; i++) 
+    {
+        if (consumo[i] > 0 && consumo[i] > consumo[carroEco]) 
+        {
+            carroEco = i;
+        }
+    }
+
+    printf("\nConsumo para percorrer 1000 km: \n");
+
+    for (i = 0; i < 5; i++) 
+    {
+        litros1000Km = 1000 / consumo[i];
+        printf("%s: %.2f litros\n", modelos[i], litros1000Km);
+    }
+
+    printf("\nModelo mais economico: %s\n", modelos[carroEco]);
+
+    return 0;
+}

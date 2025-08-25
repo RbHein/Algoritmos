@@ -1,0 +1,301 @@
+EXERCÍCIO 1
+
+/* 1. Faça um programa que então leia uma string e a imprima. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+    char str[10];
+
+    printf("Informe uma string: \n");
+    scanf("%s", &str);
+
+    printf("\nString Informada: %s", str);
+
+    return 0;
+}
+
+
+
+EXERCÍCIO 2 
+
+
+/* 2. Crie um programa que calcula o comprimento de uma string (não use a função strlen).*/
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int comprimento = 0;
+    char str[100];
+
+    printf("Informe uma String: ");
+    fgets(str, sizeof(str), stdin);
+
+    while (str[comprimento] != '\0')
+    {
+        comprimento++;
+    }
+
+    printf("Comprimento da String: %d\n", comprimento);
+    
+    return 0;
+}
+
+
+EXERCÍCIO 3
+
+/* 3. Entre com um nome e imprima o nome somente se a primeira letra do nome for ‘a’
+(maiúscula ou minúscula). */
+
+#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+    char nome [50];
+
+    printf("Informe um nome qualquer: ");
+    scanf("%s", &nome);
+
+    if (nome[0] == 'a' || nome[0] == 'A')
+    {
+        printf("Nome Inicia com A: %s", nome);
+    }
+
+    return 0;
+}
+
+
+EXERCÍCIO 4
+
+/* 4. Faça um programa que leia um nome e imprima as 4 primeiras letras do nome. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+    int i;
+    char nome [50];
+
+    printf("Informe um nome qualquer: ");
+    scanf("%s", &nome);
+
+    for (i = 0; i < 4; i++)
+    {
+        printf("%c", nome[i]);
+    }
+
+    return 0;
+}
+
+
+EXERCÍCIO 5
+
+
+/* 5. Digite um nome, calcule e retorne quantas letras tem esse nome. */
+
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int qtdLetras = 0;
+    char nome[100];
+
+    printf("Informe um Nome: ");
+    scanf("%s", &nome);
+
+    while (nome[qtdLetras] != '\0')
+    {
+        qtdLetras++;
+    }
+
+    printf("Quantidade de Letras: %d\n", qtdLetras);
+    
+    return 0;
+}
+
+
+EXERCÍCIO 6
+
+/* 6. Ler nome, sexo e idade. Se sexo for feminino e idade menor que 25, imprime o nome da
+pessoa e a palavra “ACEITA”, caso contrário imprimir “NÃO ACEITA”. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int idade;
+    char sexo, nome [50];
+
+    printf("Informe o Nome: \n");
+    scanf("%s", nome);
+
+    printf("Digite M para Sexo Masculino ou F para Sexo Feminino: \n");
+    scanf("%s", &sexo);
+
+    printf("Informe a Idade: \n");
+    scanf("%d", &idade);
+
+    if (sexo == 'F' && idade < 25)
+    {
+        printf("%s aceita\n", nome);
+    }
+
+    else
+    {
+        printf("Nao Aceita.");
+    }
+
+    return 0;
+}
+
+
+
+EXERCÍCIO 7
+
+
+/* 7. Crie um programa que compara duas strings (não use a função strcmp).*/
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int i = 0;
+    char str1[100], str2[100];
+
+    printf("Informe a primeira String: ");
+    scanf("%s", &str1);
+
+    printf("Informe a segunda String: ");
+    scanf("%s", &str2);
+
+    while (str1[i] != '\0' && str2[i] != '\0' && str1[i] == str2[i]) 
+    {
+        i++;
+    }
+
+    if (str1[i] == '\0' && str2[i] == '\0') 
+    {
+        printf("Strings Iguais.\n");
+    } 
+    
+    else if (str1[i] < str2[i]) 
+    {
+        printf("Primeira String menor que a segunda.\n");
+    } 
+    
+    else if (str1[i] > str2[i])
+    {
+        printf("Primeira String maior que a segunda.\n");
+    }
+
+    else
+    {
+        printf("Erro.\n");
+    }
+
+    return 0;
+}
+
+
+EXERCÍCIO 8
+
+
+/* 8. faça um programa que conte o número de 1’s que aparecem em um string. Exemplo: ́
+“0011001” = 3 */
+
+#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+    int i = 0, cont = 0;
+    char string[100];
+
+    printf("Informe uma String: ");
+    scanf("%s", &string);
+
+
+    while (string[i] != '\0') 
+    {
+        if (string[i] == '1') 
+        {
+            cont++;
+        }
+        i++;
+    }
+
+    printf("Numero de '1' na String: %d\n", cont);
+
+    return 0;
+}
+
+
+
+EXERCÍCIO 9
+
+/* 9. Escreva um programa que substitui as ocorrências de um caractere ‘0’ em uma string por
+outro caractere ‘1’. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int i;
+    char str[100];
+
+    printf("Informe uma string: ");
+    scanf("%s", str);
+
+    for (i = 0; str[i] != '\0'; i++) 
+    {
+        if (str[i] == '0') 
+        {
+            str[i] = '1';
+        }
+    }
+
+    printf("String Trocada: %s\n", str);
+
+    return 0;
+}
+
+
+
+EXERCÍCIO 10
+
+
+/* 10. Faça um programa que receba uma palavra e a imprima de tras-para-frente. */
+
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    int i, tamanho;
+    char palavra[100];
+
+    printf("Informe uma palavra: ");
+    scanf("%s", &palavra);
+
+    tamanho = strlen(palavra);
+
+    printf("Palavra informada ao contrario: ");
+
+    for (i = tamanho - 1; i >= 0; i--) 
+    {
+        printf("%c", palavra[i]);
+    }
+
+    return 0;
+}
