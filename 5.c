@@ -1,34 +1,25 @@
+/* 5. Leia um vetor de 10 posições. Contar e escrever quantos valores pares ele possui */
 
 #include <stdio.h>
+#include <stdlib.h>
 
-int main ()
+int main() 
 {
-    int i, n, maior, menor;
+    int i, pares = 0, vetor[10];
 
-    printf("Informe 10 numeros: \n");
-    scanf("%d", &n);
+    printf("Informe os 10 valores do Vetor: \n");
 
-    maior = n;
-    menor = n;
-
-    for (i = 2; i <= 10; i++)
+    for (i = 0; i < 10; i++)
     {
-        scanf("%d", &n);
+        scanf("%d", &vetor[i]);
 
-        if (n > maior)
+        if (vetor[i] % 2 == 0)
         {
-            maior = n;
+            pares++;
         }
-
-        else
-        {
-            menor = n;
-        }    
     }
 
-    printf("Maior Valor: %d\n", maior);
-    printf("Menor Valor: %d\n", menor);
-
+    printf("O Vetor possui %d valores pares", pares);
+    
     return 0;
-
 }

@@ -1,17 +1,25 @@
+/* 2. Crie um programa que lê 6 valores inteiros e, em seguida, mostre na tela os valores lidos. */
+
 #include <stdio.h>
+#include <stdlib.h>
 
-int main ()
+int main() 
 {
-    int n = 10;
+    int i, valores [6];
 
-    while (n >= 0)
+    printf("Informe 6 valores inteiros: ");
+
+    for (i = 0; i < 6; i++)
     {
-        printf("%d\n", n);
-        n--;
+        scanf("%d", &valores[i]);
     }
 
-    printf("FIM!");
-    
+    printf("Valores lidos: \n");
+
+    for (i = 0; i < 6; i++) 
+    {
+        printf("%d\n", valores[i]);
+    }
+
     return 0;
-    
 }
